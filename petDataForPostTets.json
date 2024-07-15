@@ -1,0 +1,247 @@
+[
+  {
+    "testName": "Name testing: Correct data",
+    "body": {
+      "name": "Whiskerstest",
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "testName": "Name testing: null value",
+    "body": {
+      "name": null,
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Name testing: No name",
+    "body": {
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "testName": "Name testing: Empty string",
+    "body": {
+      "name": "",
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "testName": "Name testing: Whitespace string",
+    "body": {
+      "name": "   ",
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "testName": "Name testing: Max length string (29 char)",
+    "body": {
+      "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "testName": "Name testing: Too long string (31 char)",
+    "body": {
+      "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Name testing: Name is number instead of string",
+    "body": {
+      "name": 12345,
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Name testing: Name is boolean instead of string",
+    "body": {
+      "name": true,
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Name testing: Name is array instead of string",
+    "body": {
+      "name": ["Missy"],
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Name testing: Name is object instead of string",
+    "body": {
+      "name": { "first": "Missy" },
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Name testing: Name is special characters",
+    "body": {
+      "name": "@#$%^&*()_+",
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "testName": "Name testing: Name is SQL injection",
+    "body": {
+      "name": "'; DROP TABLE users; --",
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "testName": "Name testing: Name is script injection",
+    "body": {
+      "name": "<script>alert('XSS')</script>",
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "testName": "Name testing: Name is various encodings",
+    "body": {
+      "name": "你好",
+      "species": 1,
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  },
+
+  {
+    "testName": "No species",
+    "body": {
+      "name": "Whiskerstest",
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "testName": "Species is not a number",
+    "body": {
+      "name": "Whiskerstest",
+      "species": "1",
+      "birth": "2022-12-25T00:00:00.000Z",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "testName": "No birth",
+    "body": {
+      "name": "Whiskerstest",
+      "species": 1,
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "testName": "Birth is not a date",
+    "body": {
+      "name": "Whiskerstest",
+      "species": 1,
+      "birth": "date",
+      "gender": 0,
+      "isNeutered": true,
+      "description": "Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.",
+      "pictureLink": "https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1"
+    },
+    "expectedStatus": 200
+  }
+]
