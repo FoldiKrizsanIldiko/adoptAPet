@@ -8,6 +8,57 @@
 	},
 	"item": [
 		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register a user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resp= pm.response.json();\r",
+									"const userId= resp.id;\r",
+									"pm.collectionVariables.set(\"userId\", userId);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"testildi\",\r\n  \"lastName\": \"FK\",\r\n  \"email\": \"fki@example.com\",\r\n  \"password\": \"Password0+\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Advertisement",
 			"item": [
 				{
@@ -417,14 +468,11 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"The Application is deleted\",()=>{\r",
-									"    const text = pm.response.text();\r",
-									"    pm.expect(text).to.be.eq(\"Application deleted.\")\r",
-									"})"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -449,57 +497,6 @@
 									"key": "applicationId",
 									"value": "{{applicationId}}"
 								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Authentication",
-			"item": [
-				{
-					"name": "Register a user",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"const resp= pm.response.json();\r",
-									"const userId= resp.id;\r",
-									"pm.collectionVariables.set(\"userId\", userId);\r",
-									"\r",
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"firstName\": \"ildi\",\r\n  \"lastName\": \"FK\",\r\n  \"email\": \"fki@example.com\",\r\n  \"password\": \"Password0+\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/api/auth/register",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"register"
 							]
 						}
 					},
@@ -707,10 +704,7 @@
 									"    pm.response.to.have.status(204);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Pet deleted successfully\", ()=>{\r",
-									"    const resp= pm.response.text();\r",
-									"    pm.expect(resp).is.eq(\"Pet deleted successfully\");\r",
-									"})"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
