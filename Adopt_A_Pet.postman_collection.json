@@ -55,6 +55,121 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get user by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resp= pm.response.json();\r",
+									"const userId = pm.collectionVariables.get(\"userId\");\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The user exists\", ()=>{\r",
+									"   pm.expect(resp).to.be.an('object').that.is.not.empty;\r",
+									"   pm.expect(resp).to.have.property(\"id\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"The user id is correct\",()=>{\r",
+									"    pm.expect(resp.id).to.eql(userId)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"The user is a tester\",()=>{\r",
+									"    pm.expect(resp.firstName).to.contains(\"test\");\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/:userId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "{{userId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/:userId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "{{userId}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -182,6 +297,41 @@
 					],
 					"request": {
 						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/advertisement/{{advertisementId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"advertisement",
+								"{{advertisementId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an advertisement",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
 						"header": [],
 						"url": {
 							"raw": "{{base_url}}/api/advertisement/{{advertisementId}}",
@@ -777,23 +927,23 @@
 		},
 		{
 			"key": "CreatedPet",
-			"value": "67"
+			"value": "150"
 		},
 		{
 			"key": "currentDate",
-			"value": "2024-07-11T08:38:28.022Z"
+			"value": "2024-07-16T08:48:47.451Z"
 		},
 		{
 			"key": "advertisementId",
-			"value": "10"
+			"value": "22"
 		},
 		{
 			"key": "userId",
-			"value": "a01ea79e-f079-4374-a633-65dd9b6ee8d8"
+			"value": "014c6fc8-2573-4c55-b8ce-173d238a8dbc"
 		},
 		{
 			"key": "applicationId",
-			"value": ""
+			"value": "12"
 		},
 		{
 			"key": "requestData",
