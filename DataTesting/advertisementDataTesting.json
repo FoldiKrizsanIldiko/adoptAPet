@@ -1,0 +1,32 @@
+[
+  {
+    "testName": "Correct data",
+    "body": {
+      "petId": 1,
+      "expiresAt": "2024-07-23T12:37:54.471Z"
+    },
+    "expectedStatus": 201
+  },
+  {
+    "testName": "Pet id : no data",
+    "body": {
+      "expiresAt": "2024-07-23T12:37:54.471Z"
+    },
+    "expectedStatus": 201
+  }
+]
+/* // /*+correct
+// no data
+// null
+// format good with 0
+// format good with 9
+// different format:  ISO 8601 YYYY-MM-DDTHH:MM:SS.sssZ
+// string
+// number
+// boolean
+// array
+// object
+// SQL "'; DROP TABLE users; --"
+// script injection "<script>alert('XSS')</script>"*/
+
+// someting */
