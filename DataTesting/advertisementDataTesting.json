@@ -12,21 +12,125 @@
     "body": {
       "expiresAt": "2024-07-23T12:37:54.471Z"
     },
-    "expectedStatus": 201
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Pet id : null",
+    "body": {
+      "petId": null,
+      "expiresAt": "2024-07-23T12:37:54.471Z"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Pet id : non existing",
+    "body": {
+      "petId": 111111111,
+      "expiresAt": "2024-07-23T12:37:54.471Z"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Pet id : string",
+    "body": {
+      "petId": "1",
+      "expiresAt": "2024-07-23T12:37:54.471Z"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Pet id : array",
+    "body": {
+      "petId": ["1"],
+      "expiresAt": "2024-07-23T12:37:54.471Z"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Pet id : object",
+    "body": {
+      "petId": {"value":"1"},
+      "expiresAt": "2024-07-23T12:37:54.471Z"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Expire data : no data",
+    "body": {
+      "petId": 1
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Expire data : null",
+    "body": {
+      "petId": 1,
+      "expiresAt": null
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Expire data : all data 0",
+    "body": {
+      "petId": 1,
+      "expiresAt": "0000-00-00T00:00:00.000Z"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Expire data : all data 9",
+    "body": {
+      "petId": 1,
+      "expiresAt": "9999-99-99T:99:99.999Z"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Expire data : different format yyyy-mm-dd",
+    "body": {
+      "petId": 1,
+      "expiresAt": "2024-07-24"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Expire data : simple string",
+    "body": {
+      "petId": 1,
+      "expiresAt": "data"
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Expire data : number",
+    "body": {
+      "petId": 1,
+      "expiresAt": 1
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Expire data : boolean",
+    "body": {
+      "petId": 1,
+      "expiresAt": true
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Expire data : array",
+    "body": {
+      "petId": 1,
+      "expiresAt": ["2024-07-23T12:37:54.471Z"]
+    },
+    "expectedStatus": 400
+  },
+  {
+    "testName": "Expire data : object",
+    "body": {
+      "petId": 1,
+      "expiresAt": { "value": "2024-07-23T12:37:54.471Z" }
+    },
+    "expectedStatus": 400
   }
 ]
-/* // /*+correct
-// no data
-// null
-// format good with 0
-// format good with 9
-// different format:  ISO 8601 YYYY-MM-DDTHH:MM:SS.sssZ
-// string
-// number
-// boolean
-// array
-// object
-// SQL "'; DROP TABLE users; --"
-// script injection "<script>alert('XSS')</script>"*/
-
-// someting */
