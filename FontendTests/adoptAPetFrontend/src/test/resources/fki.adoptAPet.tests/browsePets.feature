@@ -5,7 +5,6 @@ Feature: Browse adoptable pets
   Background:
     Given I am on home page
 
-
   Scenario: I can see the adoptable pets
     And I am NOT logged in
     When I click on Adoptable pets button

@@ -29,4 +29,8 @@ public class AdoptPage {
         chromedriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         wait = new WebDriverWait(chromedriver, Duration.ofSeconds(15));
     }
+
+    public boolean adoptablePetsAreVisible(){
+        return !adoptablePets.isEmpty();
+    }
 }
