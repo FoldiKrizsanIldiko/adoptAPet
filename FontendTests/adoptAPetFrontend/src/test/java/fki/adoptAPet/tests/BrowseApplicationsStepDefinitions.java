@@ -9,8 +9,8 @@ public class BrowseApplicationsStepDefinitions {
     public void iClickOnMyApplicationsButton() {
     }
 
-    @Then("I can see only the pets I want to adapt or the message that I do not have applicaton")
-    public void iCanSeeOnlyThePetsIWantToAdaptOrTheMessageThatIDoNotHaveApplicaton() {
+    @Then("I can see only the pets I want to adapt or the message that I do not have application")
+    public void iCanSeeOnlyThePetsIWantToAdaptOrTheMessageThatIDoNotHaveApplication() {
     }
 
     @And("I check out the {} checkbox")

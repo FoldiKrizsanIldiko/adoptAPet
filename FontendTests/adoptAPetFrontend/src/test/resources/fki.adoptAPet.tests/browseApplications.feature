@@ -2,11 +2,11 @@
 Feature: I want to see my applications
 
   Background:
-    Given I am on Home page
+    Given I am on home page
 
   Scenario: I can browse my applications
     When I click on My applications button
-    Then I can see only the pets I want to adapt or the message that I do not have applicaton
+    Then I can see only the pets I want to adapt or the message that I do not have application
 
   Scenario Outline: I can filter my applications
     When I click on My applications button

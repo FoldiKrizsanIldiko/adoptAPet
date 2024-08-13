@@ -5,6 +5,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginStepDefinitions {
+
+
     @When("I click on Login button")
     public void iClickOnLoginButton() {
     }
@@ -27,5 +29,10 @@ public class LoginStepDefinitions {
 
     @And("I should been redirected to page with adoptable pets")
     public void iShouldBeenRedirectedToPageWithAdoptablePets() {
+    }
+
+    @When("I am logged in login")
+    public void iAmLoggedInLogin() {
+       // reusableStepDefinitions...
     }
 }
