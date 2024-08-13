@@ -12,20 +12,20 @@ Feature: Browse adoptable pets
     Then I can see if there are any pets for adoption
 
 
-    Scenario Outline: I can filter the pets
-      When I am NOT logged in
-      When I click on Adoptable pets button
-      When I click on the selector
-      When I choose <option>
-      Then I can see only <option> types of animal or message that there are no animals of this type
+  Scenario Outline: I can filter the pets
+    When I am NOT logged in
+    When I click on Adoptable pets button
+    When I click on the selector
+    When I choose <option>
+    Then I can see only <option> types of animal or message that there are no animals of this type
 
-      Examples:
-        | option    |
-        | all       |
-        | dogs      |
-        | cats      |
-        | rabbits   |
-        | hamsters  |
-        | elephants |
+    Examples:
+      | option    |
+      | all       |
+      | dogs      |
+      | cats      |
+      | rabbits   |
+      | hamsters  |
+      | elephants |
 
 
