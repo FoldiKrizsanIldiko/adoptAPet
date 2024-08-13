@@ -2,7 +2,7 @@
 Feature: The home page can be opened
 
   Background:
-    Given I navigate to the home page
+    Given I am on home page
 
   Scenario: The page is working
     Then I can see navbar

@@ -3,15 +3,13 @@ package fki.adoptAPet.tests;
 import fki.adoptAPet.PageFactory.HomePage;
 import fki.adoptAPet.PageFactory.LoginPage;
 import fki.adoptAPet.PageFactory.NavbarPage;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -22,9 +20,9 @@ public class HomePageStepDefinitions {
     NavbarPage navbarPage = new NavbarPage(driver);
     LoginPage loginPage = new LoginPage(driver);
 
-    @When("I navigate to the home page")
-    public void iNavigateToTheHomePage() {
-        homePage.openHomePage();
+    @Before("@home")
+    public void setDriverToReusableStepDefinitions() {
+        ReusableStepDefinitions.setDriver(driver);
     }
 
     @Then("I can see navbar")
@@ -55,32 +53,17 @@ public class HomePageStepDefinitions {
         assertTrue(navbarPage.LogoutButtonIsVisible(), "Logout button is not visible");
     }
 
-    @When("I am logged in")
-    public void iAmLoggedIn() {
-        navbarPage.goToLoginPage();
-        loginPage.inputCredentials();
-        System.out.println("I made login");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        Set<Cookie> cookies = driver.manage().getCookies();
-        System.out.println(cookies);
-
-        Cookie specCookie = driver.manage().getCookieNamed(".AspNetCore.Identity.Application");
-        System.out.println(specCookie);
-    }
-
-
     @Given("I click on Home button")
     public void iClickOnHomeButton() {
         navbarPage.openHomePage();
     }
 
-    @When("I am NOT logged in")
-    public void iAmNOTLoggedIn() {
-        driver.manage().getCookies();
-        System.out.println(driver.manage().getCookies() + "iamNotLoggedIn");
+    @After("@home")
+    public void TearDown() {
+        try {
+            driver.quit();
+        } catch (Exception e) {
+            System.err.println("Error during teardown: " + e.getMessage());
+        }
     }
 }
