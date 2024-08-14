@@ -14,7 +14,6 @@ Feature: Browse adoptable pets
   Scenario Outline: I can filter the pets
     When I am NOT logged in
     When I click on Adoptable pets button
-    When I click on the selector
     When I choose <option>
     Then I can see only <option> types of animal or message that there are no animals of this type
 

@@ -1,7 +1,6 @@
 package fki.adoptAPet.tests;
 
 import fki.adoptAPet.PageFactory.AdoptPage;
-import fki.adoptAPet.PageFactory.HomePage;
 import fki.adoptAPet.PageFactory.NavbarPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -15,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class BrowsePetsStepDefinitions {
 
     WebDriver driver = new ChromeDriver();
-    HomePage homePage = new HomePage(driver);
     NavbarPage navbarPage = new NavbarPage(driver);
     AdoptPage adoptPage = new AdoptPage(driver);
 
@@ -23,7 +21,6 @@ public class BrowsePetsStepDefinitions {
     public void setDriverToReusableStepDefinitions() {
         ReusableStepDefinitions.setDriver(driver);
     }
-
 
     @When("I click on Adoptable pets button")
     public void iClickOnAdoptablePetsButton() {
@@ -35,20 +32,24 @@ public class BrowsePetsStepDefinitions {
         assertTrue(adoptPage.adoptablePetsAreVisible());
     }
 
-    @When("I click on the selector")
-    public void iClickOnTheSelector() {
-    }
 
     @When("I choose {}")
     public void iChoose(String arg0) {
+        adoptPage.selectFilter(arg0);
     }
 
     @Then("I can see only {} types of animal or message that there are no animals of this type")
     public void iCanSeeOnlyTypesOfAnimalOrMessageThatThereAreNoAnimalsOfThisType(String arg0) {
+        assertTrue(adoptPage.adoptableAnimalsAreFiltered(arg0));
     }
 
     @After("@browsePets")
     public void TearDown() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         try {
             driver.quit();
         } catch (Exception e) {
