@@ -82,4 +82,8 @@ public class NavbarPage {
     public void goToLoginPage() {
         LoginButton.click();
     }
+
+    public void openRegistrationPage(){
+        RegistrationButton.click();
+    }
 }
