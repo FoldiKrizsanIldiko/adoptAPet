@@ -17,13 +17,13 @@ public class ReusableStepDefinitions {
 
     private static WebDriver driver;
 
-    public static void setDriver(WebDriver webdriver){
-        driver=webdriver;
+    public static void setDriver(WebDriver webdriver) {
+        driver = webdriver;
     }
 
     @Given("I am on home page")
     public void iAmOnHomePage() {
-       new HomePage(driver).openHomePage();
+        new HomePage(driver).openHomePage();
     }
 
     @When("I am logged in")
@@ -47,8 +47,7 @@ public class ReusableStepDefinitions {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        Set<Cookie> cookies =driver.manage().getCookies();
-        System.out.println(cookies + "iamNotLoggedIn");
+        Set<Cookie> cookies = driver.manage().getCookies();
         assertTrue(cookies.isEmpty(), "There are some cookies stored in browser");
     }
 
