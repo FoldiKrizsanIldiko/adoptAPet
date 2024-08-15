@@ -2,7 +2,6 @@
 Feature:
   I want to adopt an animal
 
-
   Scenario: I can sign up to adopt the pet
     Given I am on adopt page
     Given I can see at least one adoptable pet i have not sign in for jet

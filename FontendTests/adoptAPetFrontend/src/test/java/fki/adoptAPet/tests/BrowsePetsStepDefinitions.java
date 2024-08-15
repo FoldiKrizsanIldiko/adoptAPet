@@ -32,7 +32,6 @@ public class BrowsePetsStepDefinitions {
         assertTrue(adoptPage.adoptablePetsAreVisible());
     }
 
-
     @When("I choose {}")
     public void iChoose(String arg0) {
         adoptPage.selectFilter(arg0);

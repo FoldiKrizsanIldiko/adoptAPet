@@ -10,7 +10,6 @@ Feature: Browse adoptable pets
     When I click on Adoptable pets button
     Then I can see if there are any pets for adoption
 
-
   Scenario Outline: I can filter the pets
     When I am NOT logged in
     When I click on Adoptable pets button
@@ -25,5 +24,4 @@ Feature: Browse adoptable pets
       | rabbits   |
       | hamsters  |
       | elephants |
-
 

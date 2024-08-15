@@ -18,4 +18,3 @@ Feature: The home page can be opened
     When I click on Home button
     Then I can see home, adoptable pets, my applications and logout buttons
 
-

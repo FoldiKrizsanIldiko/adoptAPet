@@ -28,7 +28,6 @@ public class NavbarPage {
     @FindBy(css = "[data-test='link-logout']")
     WebElement LogoutButton;
 
-
     public NavbarPage(WebDriver driver) {
         this.chromedriver = driver;
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
@@ -83,7 +82,7 @@ public class NavbarPage {
         LoginButton.click();
     }
 
-    public void openRegistrationPage(){
+    public void openRegistrationPage() {
         RegistrationButton.click();
     }
 }

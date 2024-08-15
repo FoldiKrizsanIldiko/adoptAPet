@@ -11,4 +11,3 @@ Feature: I can register as a user
     Then I can see message about successful registration
     And I am redirected to login page
 
-

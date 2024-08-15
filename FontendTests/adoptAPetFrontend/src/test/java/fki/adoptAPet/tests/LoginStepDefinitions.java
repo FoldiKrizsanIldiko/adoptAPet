@@ -6,7 +6,6 @@ import io.cucumber.java.en.When;
 
 public class LoginStepDefinitions {
 
-
     @When("I click on Login button")
     public void iClickOnLoginButton() {
     }
@@ -33,6 +32,6 @@ public class LoginStepDefinitions {
 
     @When("I am logged in login")
     public void iAmLoggedInLogin() {
-       // reusableStepDefinitions...
+        // reusableStepDefinitions...
     }
 }
