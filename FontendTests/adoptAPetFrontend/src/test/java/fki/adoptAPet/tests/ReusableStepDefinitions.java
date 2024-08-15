@@ -21,6 +21,15 @@ public class ReusableStepDefinitions {
         driver = webdriver;
     }
 
+    public static String getCurrentUrl() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return driver.getCurrentUrl();
+    }
+
     @Given("I am on home page")
     public void iAmOnHomePage() {
         new HomePage(driver).openHomePage();
@@ -50,5 +59,6 @@ public class ReusableStepDefinitions {
         Set<Cookie> cookies = driver.manage().getCookies();
         assertTrue(cookies.isEmpty(), "There are some cookies stored in browser");
     }
+
 
 }
