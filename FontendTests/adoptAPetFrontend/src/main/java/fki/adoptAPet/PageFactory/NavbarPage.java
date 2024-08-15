@@ -71,7 +71,7 @@ public class NavbarPage {
     }
 
     public boolean HelloUserIsVisible() {
-        return HelloUserMessage.isEnabled() && HelloUserMessage.isDisplayed();
+        return HelloUserMessage.isDisplayed();
     }
 
     public boolean LogoutButtonIsVisible() {

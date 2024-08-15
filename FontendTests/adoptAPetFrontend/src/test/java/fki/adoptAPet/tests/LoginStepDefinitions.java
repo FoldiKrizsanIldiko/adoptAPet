@@ -1,37 +1,53 @@
 package fki.adoptAPet.tests;
 
+import fki.adoptAPet.PageFactory.LoginPage;
+import fki.adoptAPet.PageFactory.NavbarPage;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginStepDefinitions {
 
+    WebDriver driver = new ChromeDriver();
+    NavbarPage navbarPage= new NavbarPage(driver);
+    LoginPage loginPage= new LoginPage(driver);
+
+    @Before("@login")
+    public void setDriverToReusableStepDefinitions() {
+        ReusableStepDefinitions.setDriver(driver);
+    }
+
     @When("I click on Login button")
     public void iClickOnLoginButton() {
+        navbarPage.goToLoginPage();
     }
 
-    @Then("The login page is opening")
-    public void theLoginPageIsOpening() {
+    @Then("I am logged in successfully")
+    public void iAmLoggedInSuccessfully() {
+        navbarPage.HelloUserIsVisible();
     }
 
-    @When("I type in my valid email address")
-    public void iTypeInMyValidEmailAddress() {
+    @And("I am redirected to the page with adoptable pets")
+    public void iAmRedirectedToThePageWithAdoptablePets() {
+        String expectedUrl= "http://localhost:4200/adopt";
+        String currentUrl =ReusableStepDefinitions.getCurrentUrl();
+        assertEquals(expectedUrl, currentUrl);
     }
 
-    @And("I type in my valid password")
-    public void iTypeInMyValidPassword() {
+
+    @When("I submit login form with valid credentials")
+    public void iSubmitLoginFormWithValidCredentials() {
+        loginPage.inputCredentials();
     }
 
-    @Then("I should be logged in successfully")
-    public void iShouldBeLoggedInSuccessfully() {
-    }
-
-    @And("I should been redirected to page with adoptable pets")
-    public void iShouldBeenRedirectedToPageWithAdoptablePets() {
-    }
-
-    @When("I am logged in login")
-    public void iAmLoggedInLogin() {
-        // reusableStepDefinitions...
+    @After("@login")
+    public void TearDown(){
+        driver.quit();
     }
 }
