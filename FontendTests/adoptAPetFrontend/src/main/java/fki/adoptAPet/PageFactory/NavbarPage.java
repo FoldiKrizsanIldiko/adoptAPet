@@ -51,7 +51,7 @@ public class NavbarPage {
     }
 
     public boolean homeButtonIsVisible() {
-        return HomeButton.isEnabled();
+        return HomeButton.isDisplayed() && HomeButton.isEnabled();
     }
 
     public boolean adoptablePetsButtonIsVisible() {
@@ -84,5 +84,8 @@ public class NavbarPage {
 
     public void openRegistrationPage() {
         RegistrationButton.click();
+    }
+    public void openLogoutPage(){
+        LogoutButton.click();
     }
 }
