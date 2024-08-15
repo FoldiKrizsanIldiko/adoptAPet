@@ -3,7 +3,7 @@ Feature: Browse adoptable pets
   I want to see if there are adoptable pets available
 
   Background:
-    Given I am on home page
+    Given I am on the home page
 
   Scenario: I can see the adoptable pets
     And I am NOT logged in

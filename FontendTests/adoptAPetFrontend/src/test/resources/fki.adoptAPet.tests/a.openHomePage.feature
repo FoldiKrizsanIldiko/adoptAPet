@@ -1,20 +1,19 @@
 @home
-Feature: The home page can be opened
+Feature: Home page tests
 
   Background:
-    Given I am on home page
+    Given I am on the home page
 
   Scenario: The page is working
-    Then I can see navbar
-    And I can see welcome message
+    Then I can see the navbar
+    And I can see the welcome message
 
   Scenario: Navbar without logging in
-    When I am NOT logged in
-    When I click on Home button
-    Then I can see on the navbar home, adoptable pets, login and registration buttons
+    Given I am NOT logged in
+    When I click on the Home button
+    Then I can see the Home, Adoptable Pets, Login, and Registration buttons on the navbar
 
-  Scenario:
-    When I am logged in
-    When I click on Home button
-    Then I can see home, adoptable pets, my applications and logout buttons
-
+  Scenario: Navbar when logged in
+    Given I am logged in
+    When I click on the Home button
+    Then I can see the Home, Adoptable Pets, My Applications, and Logout buttons on the navbar

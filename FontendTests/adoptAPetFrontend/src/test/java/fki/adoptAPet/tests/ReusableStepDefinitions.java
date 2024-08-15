@@ -30,14 +30,13 @@ public class ReusableStepDefinitions {
         return driver.getCurrentUrl();
     }
 
-    @Given("I am on home page")
-    public void iAmOnHomePage() {
+    @Given("I am on the home page")
+    public void iAmOnTheHomePage() {
         new HomePage(driver).openHomePage();
     }
 
     @When("I am logged in")
     public void iAmLoggedIn() {
-
         new NavbarPage(driver).goToLoginPage();
         new LoginPage(driver).inputCredentials();
         try {

@@ -2,7 +2,7 @@
 Feature: I can login to page
 
   Background:
-    Given I am on home page
+    Given I am on the home page
 
   Scenario: I can login from home page
     Given I am NOT logged in

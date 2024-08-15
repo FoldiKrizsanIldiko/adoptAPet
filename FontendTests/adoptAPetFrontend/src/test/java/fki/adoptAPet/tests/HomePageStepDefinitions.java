@@ -1,7 +1,6 @@
 package fki.adoptAPet.tests;
 
 import fki.adoptAPet.PageFactory.HomePage;
-import fki.adoptAPet.PageFactory.LoginPage;
 import fki.adoptAPet.PageFactory.NavbarPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -18,25 +17,24 @@ public class HomePageStepDefinitions {
     WebDriver driver = new ChromeDriver();
     HomePage homePage = new HomePage(driver);
     NavbarPage navbarPage = new NavbarPage(driver);
-    LoginPage loginPage = new LoginPage(driver);
 
     @Before("@home")
     public void setDriverToReusableStepDefinitions() {
         ReusableStepDefinitions.setDriver(driver);
     }
 
-    @Then("I can see navbar")
-    public void iCanSeeNavbar() {
+    @Then("I can see the navbar")
+    public void iCanSeeTheNavbar() {
         navbarPage.navbar_is_present();
     }
 
-    @And("I can see welcome message")
-    public void iCanSeeWelcomeMessage() {
+    @And("I can see the welcome message")
+    public void iCanSeeTheWelcomeMessage() {
         homePage.messagePresent();
     }
 
-    @Then("I can see on the navbar home, adoptable pets, login and registration buttons")
-    public void iCanSeeOnTheNavbarHomeAdoptablePetsLoginAndRegistrationButtons() {
+    @Then("I can see the Home, Adoptable Pets, Login, and Registration buttons on the navbar")
+    public void iCanSeeTheHomeAdoptablePetsLoginAndRegistrationButtonsOnTheNavbar() {
         assertTrue(navbarPage.homeButtonIsVisible(), "Home button is not visible");
         assertTrue(navbarPage.adoptablePetsButtonIsVisible(), "Adoptable Pets button is not visible");
         assertTrue(navbarPage.loginButtonIsVisible(), "Login button is not visible");
@@ -44,8 +42,8 @@ public class HomePageStepDefinitions {
 
     }
 
-    @Then("I can see home, adoptable pets, my applications and logout buttons")
-    public void iCanSeeHomeAdoptablePetsMyApplicationsAndLogoutButtons() {
+    @Then("I can see the Home, Adoptable Pets, My Applications, and Logout buttons on the navbar")
+    public void ICanSeeTheHomeAdoptablePetsMyApplicationsAndLogoutButtonsOnTheNavbar() {
         assertTrue(navbarPage.homeButtonIsVisible(), "Home button is not visible");
         assertTrue(navbarPage.adoptablePetsButtonIsVisible(), "Adoptable Pets button is not visible");
         assertTrue(navbarPage.applicationButtonIsVisible(), "My application button is not visible");
@@ -53,8 +51,8 @@ public class HomePageStepDefinitions {
         assertTrue(navbarPage.LogoutButtonIsVisible(), "Logout button is not visible");
     }
 
-    @Given("I click on Home button")
-    public void iClickOnHomeButton() {
+    @Given("I click on the Home button")
+    public void iClickOnTheHomeButton() {
         navbarPage.openHomePage();
     }
 

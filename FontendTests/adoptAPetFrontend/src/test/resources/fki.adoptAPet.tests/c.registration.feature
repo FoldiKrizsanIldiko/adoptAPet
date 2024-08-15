@@ -2,7 +2,7 @@
 Feature: I can register as a user
 
   Background:
-    Given I am on home page
+    Given I am on the home page
 
   Scenario: I can register
     Given I open the registration page
