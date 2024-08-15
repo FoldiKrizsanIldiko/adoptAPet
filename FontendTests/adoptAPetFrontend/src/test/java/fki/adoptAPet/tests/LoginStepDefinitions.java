@@ -14,12 +14,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginStepDefinitions {
 
-    WebDriver driver = new ChromeDriver();
-    NavbarPage navbarPage= new NavbarPage(driver);
-    LoginPage loginPage= new LoginPage(driver);
+    WebDriver driver;
+    NavbarPage navbarPage;
+    LoginPage loginPage;
 
     @Before("@login")
     public void setDriverToReusableStepDefinitions() {
+        driver = new ChromeDriver();
+        navbarPage = new NavbarPage(driver);
+        loginPage = new LoginPage(driver);
+        driver.manage().window().maximize();
         ReusableStepDefinitions.setDriver(driver);
     }
 
@@ -35,8 +39,8 @@ public class LoginStepDefinitions {
 
     @And("I am redirected to the page with adoptable pets")
     public void iAmRedirectedToThePageWithAdoptablePets() {
-        String expectedUrl= "http://localhost:4200/adopt";
-        String currentUrl =ReusableStepDefinitions.getCurrentUrl();
+        String expectedUrl = "http://localhost:4200/adopt";
+        String currentUrl = ReusableStepDefinitions.getCurrentUrl();
         assertEquals(expectedUrl, currentUrl);
     }
 
@@ -47,7 +51,7 @@ public class LoginStepDefinitions {
     }
 
     @After("@login")
-    public void TearDown(){
+    public void TearDown() {
         driver.quit();
     }
 }

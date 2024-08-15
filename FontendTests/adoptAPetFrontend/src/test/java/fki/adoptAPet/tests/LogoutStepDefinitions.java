@@ -13,12 +13,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LogoutStepDefinitions {
-    WebDriver driver = new ChromeDriver();
-    NavbarPage navbarPage = new NavbarPage(driver);
-    LogoutPage logoutPage = new LogoutPage(driver);
+    WebDriver driver;
+    NavbarPage navbarPage;
+    LogoutPage logoutPage;
 
     @Before("@logout")
     public void setDriverToReusableStepDefinitions() {
+        driver = new ChromeDriver();
+        navbarPage = new NavbarPage(driver);
+        logoutPage = new LogoutPage(driver);
+        driver.manage().window().maximize();
         ReusableStepDefinitions.setDriver(driver);
     }
 
@@ -41,12 +45,13 @@ public class LogoutStepDefinitions {
 
     @And("I am redirected to home page")
     public void iAmRedirectedToHomePage() {
-        String expectedUrl= "http://localhost:4200/home";
+        String expectedUrl = "http://localhost:4200/home";
         String currentUrl = ReusableStepDefinitions.getCurrentUrl();
-        assertEquals(expectedUrl,currentUrl);
+        assertEquals(expectedUrl, currentUrl);
     }
+
     @After("@logout")
-    public void TearDown(){
+    public void TearDown() {
         try {
             driver.quit();
         } catch (Exception e) {

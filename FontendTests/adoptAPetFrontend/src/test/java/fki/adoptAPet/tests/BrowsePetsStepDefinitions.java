@@ -13,12 +13,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BrowsePetsStepDefinitions {
 
-    WebDriver driver = new ChromeDriver();
-    NavbarPage navbarPage = new NavbarPage(driver);
-    AdoptPage adoptPage = new AdoptPage(driver);
+    WebDriver driver;
+    NavbarPage navbarPage;
+    AdoptPage adoptPage;
+
 
     @Before("@browsePets")
     public void setDriverToReusableStepDefinitions() {
+        driver = new ChromeDriver();
+        navbarPage = new NavbarPage(driver);
+        adoptPage = new AdoptPage(driver);
+        driver.manage().window().maximize();
         ReusableStepDefinitions.setDriver(driver);
     }
 

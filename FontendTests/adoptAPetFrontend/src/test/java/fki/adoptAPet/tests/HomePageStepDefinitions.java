@@ -14,13 +14,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HomePageStepDefinitions {
 
-    WebDriver driver = new ChromeDriver();
-    HomePage homePage = new HomePage(driver);
-    NavbarPage navbarPage = new NavbarPage(driver);
+    WebDriver driver;
+    HomePage homePage;
+    NavbarPage navbarPage;
 
     @Before("@home")
     public void setDriverToReusableStepDefinitions() {
+        driver = new ChromeDriver();
+        homePage = new HomePage(driver);
+        navbarPage = new NavbarPage(driver);
         ReusableStepDefinitions.setDriver(driver);
+        driver.manage().window().maximize();
     }
 
     @Then("I can see the navbar")

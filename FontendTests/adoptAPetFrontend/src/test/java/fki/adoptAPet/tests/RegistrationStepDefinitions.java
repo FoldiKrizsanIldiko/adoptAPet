@@ -15,13 +15,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RegistrationStepDefinitions {
-    WebDriver driver = new ChromeDriver();
-    NavbarPage navbarPage = new NavbarPage(driver);
-    RegistrationPage registrationPage = new RegistrationPage(driver);
+    WebDriver driver;
+    NavbarPage navbarPage;
+    RegistrationPage registrationPage;
 
 
     @Before("@registration")
     public void setDriverToReusableStepDefinitions() {
+        driver = new ChromeDriver();
+        navbarPage = new NavbarPage(driver);
+        registrationPage = new RegistrationPage(driver);
+        driver.manage().window().maximize();
         ReusableStepDefinitions.setDriver(driver);
     }
 
