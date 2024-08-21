@@ -42,10 +42,6 @@ public class NavbarPage {
         Adoptable_petsButton.click();
     }
 
-    public void openMy_ApplicationsPage() {
-        My_applicationsButton.click();
-    }
-
     public void navbar_is_present() {
         Navbar.isDisplayed();
     }
@@ -85,7 +81,12 @@ public class NavbarPage {
     public void openRegistrationPage() {
         RegistrationButton.click();
     }
-    public void openLogoutPage(){
+
+    public void openLogoutPage() {
         LogoutButton.click();
+    }
+
+    public void openMyApplicationsPage() {
+        My_applicationsButton.click();
     }
 }

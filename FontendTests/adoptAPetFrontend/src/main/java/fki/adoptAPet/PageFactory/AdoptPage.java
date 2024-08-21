@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AdoptPage {
     WebDriver driver;
@@ -17,7 +18,7 @@ public class AdoptPage {
     @FindBy(xpath = "//select[@name='speciesValue']/option")
     List<WebElement> selectorOfSpecies;
 
-    @FindBy(xpath = "//ul[@data-test='adoptable-pets-list']/li")
+    @FindBy(xpath = "//li[@data-test='adoptable-pet-list-item']")
     List<WebElement> adoptablePets;
 
     @FindBy(xpath = "//h2[contains(text(),' Sorry, we do not have adoptable')]")
@@ -85,4 +86,17 @@ public class AdoptPage {
     public void acceptNotification() {
         driver.switchTo().alert().accept();
     }
+
+    public boolean AppliedPetButtonIsDisabled(List<String> appliedPetsName) {
+        List<WebElement> adoptablePetsDisabled = adoptablePets.stream().filter(e -> e.findElement(By.xpath(".//*[@data-test='adopt-button']")).getAttribute("class").equals("disabled")).collect(Collectors.toList());
+        if (appliedPetsName.size() != adoptablePetsDisabled.size()) return false;
+        else {
+            List<WebElement> disabledNames = adoptablePetsDisabled.stream().map(e -> e.findElement(By.cssSelector("[data-test = 'pet-name']"))).collect(Collectors.toList());
+            return disabledNames.stream().allMatch(name -> {
+                String disName = name.getText();
+                return appliedPetsName.stream().anyMatch(e -> e.contains(disName));
+            });
+        }
+    }
+
 }
