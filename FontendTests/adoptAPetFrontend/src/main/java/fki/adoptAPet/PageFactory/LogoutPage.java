@@ -10,21 +10,22 @@ import java.time.Duration;
 public class LogoutPage {
     WebDriver driver;
 
-    @FindBy(css="[data-test='yes-btn']")
+    @FindBy(css = "[data-test='yes-btn']")
     WebElement yesButton;
-    @FindBy(css="[data-test='message']")
+    @FindBy(css = "[data-test='message']")
     WebElement logoutMessage;
 
-    public LogoutPage(WebDriver driver){
-        this.driver=driver;
+    public LogoutPage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
     }
 
-    public void confirmLogout(){
+    public void confirmLogout() {
         yesButton.click();
     }
-    public String logoutMessageIs(){
+
+    public String logoutMessageIs() {
         return logoutMessage.getText();
     }
 

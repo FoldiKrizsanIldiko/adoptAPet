@@ -2,7 +2,7 @@
 Feature: I want to see my applications
 
   Background:
-    Given I am on home page
+    Given I am on the home page
 
   Scenario: I can browse my applications
     When I click on My applications button
