@@ -11,7 +11,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class AdoptPage {
-    WebDriver chromedriver;
+    WebDriver driver;
     WebDriverWait wait;
 
     @FindBy(xpath = "//select[@name='speciesValue']/option")
@@ -28,10 +28,10 @@ public class AdoptPage {
     //You haven't handed in an application to adopt a pet yet.
 
     public AdoptPage(WebDriver driver) {
-        this.chromedriver = driver;
+        this.driver = driver;
         PageFactory.initElements(driver, this);
-        chromedriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        wait = new WebDriverWait(chromedriver, Duration.ofSeconds(15));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
     public boolean adoptablePetsAreVisible() {
@@ -59,5 +59,30 @@ public class AdoptPage {
 
     private boolean messageNotHaveAnimals() {
         return messageNotHavePets.isDisplayed();
+    }
+
+    public boolean thereAreAdoptablePets() {
+        if (adoptablePets.isEmpty()) {
+            return false;
+        } else {
+            //.filter(e->e.getAttribute("data-test").equals("adopt-button"))
+            return adoptablePets.stream().anyMatch(pet -> {
+                WebElement currentButton = pet.findElement(By.xpath(".//*[@data-test='adopt-button']"));
+                return !currentButton.getAttribute("class").equals("disabled");
+            });
+        }
+    }
+
+    public void clickOnAdoptAPet() {
+        adoptablePets.stream()
+                .map(e -> e.findElement(By.xpath(".//*[@data-test='adopt-button']")))
+                .filter(button -> !button.getAttribute("class").equals("disabled"))
+                .findFirst()
+                .ifPresent(WebElement::click);
+
+    }
+
+    public void acceptNotification() {
+        driver.switchTo().alert().accept();
     }
 }
