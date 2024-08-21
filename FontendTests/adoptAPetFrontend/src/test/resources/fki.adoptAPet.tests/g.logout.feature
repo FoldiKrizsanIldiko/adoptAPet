@@ -3,7 +3,7 @@
 
     Background:
       Given I am on the home page
-      And I am logged in
+      And I am logged in as a User
 
       Scenario: I want to log out
         When I press logout button

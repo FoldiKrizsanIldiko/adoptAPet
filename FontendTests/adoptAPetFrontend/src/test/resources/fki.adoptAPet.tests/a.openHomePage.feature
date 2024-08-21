@@ -14,6 +14,6 @@ Feature: Home page tests
     Then I can see the Home, Adoptable Pets, Login, and Registration buttons on the navbar
 
   Scenario: Navbar when logged in
-    Given I am logged in
+    Given I am logged in as a User
     When I click on the Home button
     Then I can see the Home, Adoptable Pets, My Applications, and Logout buttons on the navbar

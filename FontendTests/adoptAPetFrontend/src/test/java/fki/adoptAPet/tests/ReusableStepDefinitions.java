@@ -35,8 +35,8 @@ public class ReusableStepDefinitions {
         new HomePage(driver).openHomePage();
     }
 
-    @When("I am logged in")
-    public void iAmLoggedIn() {
+    @When("I am logged in as a User")
+    public void iAmLoggedInAsAUser() {
         new NavbarPage(driver).goToLoginPage();
         new LoginPage(driver).inputCredentials();
         try {
