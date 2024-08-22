@@ -19,15 +19,36 @@ public class ApplicationsPage {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
     }
 
-    @FindBy(css="[data-test='application-list-item']")
+    @FindBy(css = "[data-test='application-list-item']")
     List<WebElement> MyApplications;
 
-    public boolean IHaveApplications(){
+    @FindBy(css = "[data-test='not-have-applications']")
+    WebElement message;
+
+    @FindBy(className = "radiobtn-container")
+    List<WebElement> selectors;
+
+    @FindBy(css = "[data-test='app-acceptance']")
+    List<WebElement> AppAcceptances;
+
+    public boolean IHaveApplications() {
         return !MyApplications.isEmpty();
     }
 
-    public List<String> MyApplicationsAre(){
-       List<WebElement> resultList = MyApplications.stream().map(we->we.findElement(By.xpath(".//*[@data-test='pet-name']"))).collect(Collectors.toList());
-      return resultList.stream().map(WebElement::getText).collect(Collectors.toList());
+    public boolean IHaveMessageNoApplications() {
+        return message.isDisplayed();
+    }
+
+    public List<String> MyApplicationsAre() {
+        List<WebElement> resultList = MyApplications.stream().map(we -> we.findElement(By.xpath(".//*[@data-test='pet-name']"))).collect(Collectors.toList());
+        return resultList.stream().map(WebElement::getText).collect(Collectors.toList());
+    }
+
+    public void SelectFilterForApplications(String filter) {
+        selectors.stream().filter(e -> e.getText().equals(filter)).findFirst().ifPresent(e -> e.findElement(By.xpath(".//span[@class='checkmark']")).click());
+    }
+
+    public List<String> ApplicationMessages() {
+        return AppAcceptances.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 }
