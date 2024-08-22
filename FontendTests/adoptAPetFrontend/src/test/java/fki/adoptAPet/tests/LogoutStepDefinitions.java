@@ -58,5 +58,4 @@ public class LogoutStepDefinitions {
             System.err.println("Error during teardown: " + e.getMessage());
         }
     }
-
 }

@@ -26,7 +26,6 @@ public class AdoptPage {
 
     @FindBy(css = "[test-data='not-have-applications']")
     WebElement message;
-    //You haven't handed in an application to adopt a pet yet.
 
     public AdoptPage(WebDriver driver) {
         this.driver = driver;
@@ -54,8 +53,7 @@ public class AdoptPage {
                         WebElement genderAndSpeciesElement = pet.findElement(By.xpath(".//*[@data-test ='pet-gender-and-species']"));
                         return genderAndSpeciesElement.getText().contains(filter.substring(0, filter.length() - 1));
                     });
-        } else return true
-                ;
+        } else return true;
     }
 
     private boolean messageNotHaveAnimals() {
@@ -80,7 +78,6 @@ public class AdoptPage {
                 .filter(button -> !button.getAttribute("class").equals("disabled"))
                 .findFirst()
                 .ifPresent(WebElement::click);
-
     }
 
     public void acceptNotification() {

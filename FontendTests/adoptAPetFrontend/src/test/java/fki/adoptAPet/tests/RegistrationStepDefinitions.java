@@ -19,7 +19,6 @@ public class RegistrationStepDefinitions {
     NavbarPage navbarPage;
     RegistrationPage registrationPage;
 
-
     @Before("@registration")
     public void setDriverToReusableStepDefinitions() {
         driver = new ChromeDriver();

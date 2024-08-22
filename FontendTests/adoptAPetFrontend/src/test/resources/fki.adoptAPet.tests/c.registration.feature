@@ -10,4 +10,3 @@ Feature: I can register as a user
     And I push the Register button
     Then I can see message about successful registration
     And I am redirected to login page
-

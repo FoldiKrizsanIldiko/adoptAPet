@@ -43,7 +43,6 @@ public class HomePageStepDefinitions {
         assertTrue(navbarPage.adoptablePetsButtonIsVisible(), "Adoptable Pets button is not visible");
         assertTrue(navbarPage.loginButtonIsVisible(), "Login button is not visible");
         assertTrue(navbarPage.registrationButtonIsVisible(), "Registration button is not visible");
-
     }
 
     @Then("I can see the Home, Adoptable Pets, My Applications, and Logout buttons on the navbar")

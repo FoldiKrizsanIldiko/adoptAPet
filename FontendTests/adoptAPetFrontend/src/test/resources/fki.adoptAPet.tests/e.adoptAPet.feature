@@ -28,4 +28,3 @@ Feature:
     Then I can see a notification
     And I am redirected to My Application page
     And I have more than one application
-

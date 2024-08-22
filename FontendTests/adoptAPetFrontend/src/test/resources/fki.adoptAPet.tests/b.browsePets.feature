@@ -24,4 +24,3 @@ Feature: Browse adoptable pets
       | rabbits   |
       | hamsters  |
       | elephants |
-

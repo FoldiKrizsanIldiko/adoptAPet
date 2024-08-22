@@ -58,6 +58,4 @@ public class ReusableStepDefinitions {
         Set<Cookie> cookies = driver.manage().getCookies();
         assertTrue(cookies.isEmpty(), "There are some cookies stored in browser");
     }
-
-
 }

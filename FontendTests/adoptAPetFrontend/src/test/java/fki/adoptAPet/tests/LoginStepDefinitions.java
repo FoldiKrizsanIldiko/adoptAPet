@@ -44,7 +44,6 @@ public class LoginStepDefinitions {
         assertEquals(expectedUrl, currentUrl);
     }
 
-
     @When("I submit login form with valid credentials")
     public void iSubmitLoginFormWithValidCredentials() {
         loginPage.inputCredentials();

@@ -69,7 +69,7 @@ public class AdoptAPetStepDefinitions {
     @Given("I have at least one application")
     public void iHaveAtLeastOneApplication() {
         assertTrue(applicationsPage.IHaveApplications());
-        namesOfAppliedPets= applicationsPage.MyApplicationsAre();
+        namesOfAppliedPets = applicationsPage.MyApplicationsAre();
         namesOfAppliedPets.forEach(System.out::println);
     }
 
@@ -91,7 +91,7 @@ public class AdoptAPetStepDefinitions {
 
     @And("I have more than one application")
     public void iHaveMoreThanOneApplication() {
-       assertTrue(applicationsPage.MyApplicationsAre().size()>1);
+        assertTrue(applicationsPage.MyApplicationsAre().size() > 1);
     }
 
     @When("I click on Adoptable-pets button")

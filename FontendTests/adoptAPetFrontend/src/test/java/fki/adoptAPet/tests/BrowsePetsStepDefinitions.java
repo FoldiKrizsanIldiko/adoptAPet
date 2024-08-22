@@ -17,7 +17,6 @@ public class BrowsePetsStepDefinitions {
     NavbarPage navbarPage;
     AdoptPage adoptPage;
 
-
     @Before("@browsePets")
     public void setDriverToReusableStepDefinitions() {
         driver = new ChromeDriver();
