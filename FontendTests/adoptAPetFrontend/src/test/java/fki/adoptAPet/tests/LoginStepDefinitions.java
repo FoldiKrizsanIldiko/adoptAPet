@@ -13,7 +13,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginStepDefinitions {
-
     WebDriver driver;
     NavbarPage navbarPage;
     LoginPage loginPage;
@@ -47,6 +46,16 @@ public class LoginStepDefinitions {
     @When("I submit login form with valid credentials")
     public void iSubmitLoginFormWithValidCredentials() {
         loginPage.inputCredentials();
+    }
+
+    @And("I enter {string} as username and {string} as password")
+    public void iEnterAsUsernameAndAsPassword(String arg0, String arg1) {
+        loginPage.inputCredentials(arg0, arg1);
+    }
+
+    @Then("I am notified that the login failed")
+    public void iAmNotifiedThatTheLoginFailed() {
+        loginPage.showErrorMessage();
     }
 
     @After("@login")

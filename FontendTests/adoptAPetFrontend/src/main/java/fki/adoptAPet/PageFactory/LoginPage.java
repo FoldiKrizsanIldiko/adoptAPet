@@ -18,6 +18,8 @@ public class LoginPage {
     WebElement passwordField;
     @FindBy(css = "[data-test='login-button']")
     WebElement loginButton;
+    @FindBy(css = "[data-test='login-error']")
+    WebElement errorMessage;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -29,5 +31,15 @@ public class LoginPage {
         emailField.sendKeys(validUserEmail);
         passwordField.sendKeys(validPasswordForUser);
         loginButton.click();
+    }
+
+    public void inputCredentials(String username, String password) {
+        emailField.sendKeys(username);
+        passwordField.sendKeys(password);
+        loginButton.click();
+    }
+
+    public void showErrorMessage() {
+        errorMessage.isDisplayed();
     }
 }
