@@ -20,8 +20,10 @@ public class TestCIStepDefinitions {
     @Before("@testCI")
     public void setUpDriver() {
         ChromeOptions options = new ChromeOptions();
-        // options.addArguments()
-        driver = new ChromeDriver();
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        driver = new ChromeDriver(options);
         ReusableStepDefinitions.setDriver(driver);
         googleSite = new GoogleSite(driver);
     }
