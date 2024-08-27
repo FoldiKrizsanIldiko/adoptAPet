@@ -4,6 +4,7 @@ Feature: Home page tests
   Background:
     Given I am on the home page
 
+  @workflow
   Scenario: The page is working
     Then I can see the navbar
     And I can see the welcome message

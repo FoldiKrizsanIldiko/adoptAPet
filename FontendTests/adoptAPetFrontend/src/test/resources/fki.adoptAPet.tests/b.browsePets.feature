@@ -5,6 +5,7 @@ Feature: Browse adoptable pets
   Background:
     Given I am on the home page
 
+  @workflow
   Scenario: I can see the adoptable pets
     And I am NOT logged in
     When I click on Adoptable pets button
