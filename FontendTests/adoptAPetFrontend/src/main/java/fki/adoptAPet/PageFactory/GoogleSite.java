@@ -17,7 +17,7 @@ public class GoogleSite {
     WebElement google;
 
     public void OpenGooglePage(){
-        driver.get("https://www.google.com/");
+        driver.get("https://www.google.commmm/");
     }
 
     public void GoogleSignIsDisplayed(){
