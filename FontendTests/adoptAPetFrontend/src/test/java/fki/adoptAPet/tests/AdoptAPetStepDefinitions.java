@@ -11,6 +11,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
 
@@ -27,7 +28,11 @@ public class AdoptAPetStepDefinitions {
 
     @Before("@adopt")
     public void setDriverToReusableStepDefinitions() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        driver = new ChromeDriver(options);
         navbarPage = new NavbarPage(driver);
         adoptPage = new AdoptPage(driver);
         applicationsPage = new ApplicationsPage(driver);
