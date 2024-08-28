@@ -24,7 +24,7 @@ public class LoginStepDefinitions {
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         navbarPage = new NavbarPage(driver);
         loginPage = new LoginPage(driver);
         driver.manage().window().maximize();
@@ -53,7 +53,7 @@ public class LoginStepDefinitions {
         loginPage.inputCredentials();
     }
 
-    @And("I enter {string} as username and {string} as password")
+    @And("I enter {} as username and {} as password")
     public void iEnterAsUsernameAndAsPassword(String arg0, String arg1) {
         loginPage.inputCredentials(arg0, arg1);
     }
@@ -67,4 +67,5 @@ public class LoginStepDefinitions {
     public void TearDown() {
         driver.quit();
     }
+
 }

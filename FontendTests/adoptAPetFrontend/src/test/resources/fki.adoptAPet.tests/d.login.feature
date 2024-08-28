@@ -4,12 +4,19 @@ Feature: I can login to page
   Background:
     Given I am on the home page
 
-  Scenario: I can login from home page
+  @workflow
+  Scenario Outline: I can login from home page
     Given I am NOT logged in
     When I click on Login button
-    When I submit login form with valid credentials
+    And I enter <email> as username and <password> as password
     Then I am logged in successfully
     And I am redirected to the page with adoptable pets
+
+    Examples:
+      | email                | password |
+      | tom.taylor@email.com | String!2 |
+      | staff@adoptapet.com  | String!1 |
+      | admin@adoptapet.com  | String!0 |
 
 
   Scenario:Login with invalid credentials
