@@ -35,7 +35,7 @@ public class AdoptPage {
     }
 
     public boolean adoptablePetsAreVisible() {
-        return !adoptablePets.isEmpty();
+        return !adoptablePets.isEmpty() || messageNotHaveAnimals();
     }
 
     public void selectFilter(String filter) {
@@ -85,10 +85,10 @@ public class AdoptPage {
     }
 
     public boolean AppliedPetButtonIsDisabled(List<String> appliedPetsName) {
-        List<WebElement> adoptablePetsDisabled = adoptablePets.stream().filter(e -> e.findElement(By.xpath(".//*[@data-test='adopt-button']")).getAttribute("class").equals("disabled")).collect(Collectors.toList());
+        List<WebElement> adoptablePetsDisabled = adoptablePets.stream().filter(e -> e.findElement(By.xpath(".//*[@data-test='adopt-button']")).getAttribute("class").equals("disabled")).toList();
         if (appliedPetsName.size() != adoptablePetsDisabled.size()) return false;
         else {
-            List<WebElement> disabledNames = adoptablePetsDisabled.stream().map(e -> e.findElement(By.cssSelector("[data-test = 'pet-name']"))).collect(Collectors.toList());
+            List<WebElement> disabledNames = adoptablePetsDisabled.stream().map(e -> e.findElement(By.cssSelector("[data-test = 'pet-name']"))).toList();
             return disabledNames.stream().allMatch(name -> {
                 String disName = name.getText();
                 return appliedPetsName.stream().anyMatch(e -> e.contains(disName));
