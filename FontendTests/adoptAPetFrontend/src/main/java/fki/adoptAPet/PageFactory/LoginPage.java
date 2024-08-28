@@ -9,8 +9,8 @@ import java.time.Duration;
 
 public class LoginPage {
     WebDriver driver;
-    String validUserEmail = "fki@example.com";
-    String validPasswordForUser = "Password0+";
+    String validUserEmail = "tom.taylor@email.com";
+    String validPasswordForUser = "String!2";
 
     @FindBy(css = "[data-test='email-input']")
     WebElement emailField;
