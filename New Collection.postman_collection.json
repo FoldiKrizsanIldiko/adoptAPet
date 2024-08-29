@@ -38,9 +38,9 @@
 					"raw": "http://backend:8080/api/auth/login",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"backend"
 					],
-					"port": "5028",
+					"port": "8080",
 					"path": [
 						"api",
 						"auth",
@@ -71,12 +71,6 @@
 					""
 				]
 			}
-		}
-	],
-	"variable": [
-		{
-			"key": "base_url",
-			"value": "backend:8080"
 		}
 	]
 }
