@@ -35,7 +35,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5028/api/auth/login",
+					"raw": "http://backend:8080/api/auth/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -76,7 +76,7 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "localhost:5028"
+			"value": "backend:8080"
 		}
 	]
 }
