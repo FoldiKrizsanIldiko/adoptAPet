@@ -7,10 +7,46 @@
 	},
 	"item": [
 		{
-			"name": "New Request",
+			"name": "login as simple user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"tom.taylor@email.com\",\r\n  \"password\": \"String!2\",\r\n  \"rememberMe\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5028/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5028",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
 			},
 			"response": []
 		}
@@ -40,7 +76,7 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "localhost:5000"
+			"value": "localhost:5028"
 		}
 	]
 }
