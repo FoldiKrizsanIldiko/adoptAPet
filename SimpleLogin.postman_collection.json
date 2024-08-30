@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "dcecf385-ab83-44b3-9b8b-59372ef4cedb",
-		"name": "New Collection",
+		"name": "LoginAsTom",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26496391"
 	},
@@ -38,9 +38,9 @@
 					"raw": "http://localhost:5000/api/auth/login",
 					"protocol": "http",
 					"host": [
-						"backend"
+						"localhost"
 					],
-					"port": "8080",
+					"port": "5000",
 					"path": [
 						"api",
 						"auth",
