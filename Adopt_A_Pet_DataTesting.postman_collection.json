@@ -1,0 +1,442 @@
+{
+	"info": {
+		"_postman_id": "9944f9af-7ea0-4433-9431-a8081174b3f9",
+		"name": "Adopt_A_Pet_DataTesting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26496391"
+	},
+	"item": [
+		{
+			"name": "Add a pet data testing",
+			"item": [
+				{
+					"name": "Create a pet DT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const nameOfTest= pm.iterationData.get(\"testName\")\r",
+									"\r",
+									"pm.test(nameOfTest, function () {\r",
+									"    pm.response.to.have.status(pm.iterationData.get(\"expectedStatus\"));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"if(pm.response.to.have.status(201)){\r",
+									"    const createdPet = pm.response.json().id;\r",
+									"    pm.collectionVariables.set(\"createdPet\", createdPet);\r",
+									"    pm.execution.setNextRequest(\"Delete a pet for DT\");\r",
+									"} else pm.execution.setNextRequest(null);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"/*use a .json file for data. The format of .json is: \r",
+									"{\r",
+									"    \"testName\":\"Correct data\",\r",
+									"    \"body\": {\r",
+									"      \"name\": \"Whiskerstest\",\r",
+									"      \"species\": 1,\r",
+									"      \"birth\": \"2022-12-25T00:00:00.000Z\",\r",
+									"      \"gender\": 0,\r",
+									"      \"isNeutered\": true,\r",
+									"      \"description\": \"Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.\",\r",
+									"      \"pictureLink\": \"https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1\"\r",
+									"    },\r",
+									"    \"expectedStatus\": 200\r",
+									"  }\r",
+									"the testName and expectedStatus is used in Post-response  \r",
+									"*/\r",
+									"const requestData = pm.iterationData.toJSON();\r",
+									"const theBody = requestData.values[1].value;\r",
+									"\r",
+									"pm.collectionVariables.set(\"requestData\",JSON.stringify(theBody));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{requestData}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/pet",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a pet for DT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/pet/:petId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"pet",
+								":petId"
+							],
+							"variable": [
+								{
+									"key": "petId",
+									"value": "{{CreatedPet}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create user data testing",
+			"item": [
+				{
+					"name": "Register a user DT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const testName = pm.iterationData.get(\"testName\");\r",
+									"const expStatus = pm.iterationData.get(\"expectedStatus\");\r",
+									"\r",
+									"pm.test(testName, ()=>{\r",
+									"    pm.response.to.have.status(expStatus)\r",
+									"});\r",
+									"\r",
+									"if(pm.response.code === 200){\r",
+									"    const resp = pm.response.json();\r",
+									"    const userid = resp.id;\r",
+									"    pm.collectionVariables.set(\"userIdDT\", userid);\r",
+									"    pm.execution.setNextRequest(\"Delete user by id DT\");\r",
+									"} else {\r",
+									"    pm.execution.setNextRequest(null);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"/*{\r",
+									"    \"testName\": \"Correct data\",\r",
+									"    \"body\": {\r",
+									"      \"firstName\": \"testildi\",\r",
+									"      \"lastName\": \"FK\",\r",
+									"      \"email\": \"fki@example.com\",\r",
+									"      \"password\": \"Password0+\"\r",
+									"    },\r",
+									"    \"expectedStatus\": 200\r",
+									"  }*/\r",
+									"\r",
+									"const body = pm.iterationData.get(\"body\");\r",
+									"pm.collectionVariables.set(\"userDTbody\", JSON.stringify(body))\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{userDTbody}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user by id DT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/:userId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "{{userIdDT}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manual test for case",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"name\": 1,\r\n      \"species\": 1,\r\n      \"birth\": \"2022-12-25T00:00:00.000Z\",\r\n      \"gender\": 100,\r\n      \"isNeutered\": true,\r\n      \"description\": \"Playful and affectionate Domestic Shorthair cat. Adaptable and thrives in most households.\",\r\n      \"pictureLink\": \"https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZHkIHKVx7e9wzZfVln6QKLdoHo7OOrSo_RXIjTzR0lFK9AAK-LqpvRFZRUhl0HAWUqlSw2MtP3Eksa0egyK3p3gkUgCTleEZo=w1110-h911-rw-v1\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/pet",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Manual user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/*const testName = pm.iterationData.get(\"testName\");\r",
+							"const expStatus = pm.iterationData.get(\"expectedStatus\");\r",
+							"console.log(\"anything\");\r",
+							"console.log(expStatus);*/\r",
+							"pm.test(\"testName\", ()=>{\r",
+							"    // pm.expect(pm.response.code).to.eql(400);\r",
+							"    pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"/*if(pm.response.to.have.status(200)){\r",
+							"    const resp = pm.response.json();\r",
+							"    const userid = resp.id;\r",
+							"    pm.collectionVariables.set(\"userIdDT\", userid);\r",
+							"    pm.execution.setNextRequest(\"Delete user by id DT\");\r",
+							"} else {\r",
+							"    console.log(\"else\")\r",
+							"    pm.execution.setNextRequest(null);\r",
+							"}*/\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"/*{\r",
+							"    \"testName\": \"Correct data\",\r",
+							"    \"body\": {\r",
+							"      \"firstName\": \"testildi\",\r",
+							"      \"lastName\": \"FK\",\r",
+							"      \"email\": \"fki@example.com\",\r",
+							"      \"password\": \"Password0+\"\r",
+							"    },\r",
+							"    \"expectedStatus\": 200\r",
+							"  }*/\r",
+							"\r",
+							"const body = pm.iterationData.get(\"body\");\r",
+							"pm.collectionVariables.set(\"userDTbody\", JSON.stringify(body))\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"testildi\",\r\n    \"lastName\": \"FK\",\r\n    \"email\": \"l.laaaa@sjsjsj.bb\",\r\n    \"password\": \"Password0+\"\r\n}\r\n //#$@%^&*.()_+\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/auth/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5028"
+		},
+		{
+			"key": "requestData",
+			"value": ""
+		},
+		{
+			"key": "userId",
+			"value": ""
+		},
+		{
+			"key": "userDTbody",
+			"value": ""
+		},
+		{
+			"key": "userIdDT",
+			"value": ""
+		}
+	]
+}
