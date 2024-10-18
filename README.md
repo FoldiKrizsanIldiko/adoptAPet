@@ -6,8 +6,8 @@ The application was developed by
 The tests were created by
 
 [![Földi Krizsán Ildikó](https://img.shields.io/badge/F%C3%B6ldi%20Krizs%C3%A1n%20Ildik%C3%B3-blue.svg?logo=github)](https://github.com/FoldiKrizsanIldiko)
-
-## About The Project
+<details>
+<summary>📖 Overview of the Project Being Tested </summary> 
 
 This project is an application created for an animal shelter. Through the app, users can browse animals and express their interest in adopting. 
 The shelter team has different access permissions, allowing them to upload new data and review adoption requests. 
@@ -47,6 +47,7 @@ Run the frontend:
 ng serve -o
 ```
 Now the page should open in your browser http://localhost:4200/adopt
+</details>
 
 
 ![img.png](img.png)
