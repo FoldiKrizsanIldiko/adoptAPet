@@ -49,5 +49,7 @@ ng serve -o
 Now the page should open in your browser http://localhost:4200/adopt
 </details>
 
+API tesztek leírása
+Frontend tesztek leírása
 
 ![img.png](img.png)

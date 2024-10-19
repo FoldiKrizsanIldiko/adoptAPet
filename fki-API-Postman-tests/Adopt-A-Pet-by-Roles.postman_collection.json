@@ -1,0 +1,718 @@
+{
+	"info": {
+		"_postman_id": "9e9d2e5e-93d2-4afa-bcbe-5b3784c02d0a",
+		"name": "Adopt-A-Pet-by-Roles",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26496391"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "RegisterAsPostman",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"    pm.test(\"Status code is 201\", function () {\r",
+									"        pm.response.to.have.status(201);\r",
+									"    });\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Postman\",\r\n  \"lastName\": \"Postman\",\r\n  \"email\": \"postman@example.com\",\r\n  \"password\": \"String!0\",\r\n  \"isStaff\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginAsPostman",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\"email\": \"postman@example.com\",\r\n            \"password\": \"String!0\",\r\n            \"rememberMe\": true}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AP-add_application U",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const resp= pm.response.json();\r",
+									"\r",
+									"pm.collectionVariables.set(\"advertisementID\", resp.id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "1",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/application/mine",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"application",
+								"mine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AP- get mine appli U",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const resp = pm.response.json(); \r",
+									"\r",
+									"pm.test(\"Response is an array\", function () {\r",
+									"    pm.expect(Array.isArray(resp)).to.be.true;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/application/mine",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"application",
+								"mine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AP-get_app_by_id U",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/application/app/:applicationId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"application",
+								"app",
+								":applicationId"
+							],
+							"variable": [
+								{
+									"key": "applicationId",
+									"value": "{{advertisementID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AP-delete an application U",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/application/:applicationId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"application",
+								":applicationId"
+							],
+							"variable": [
+								{
+									"key": "applicationId",
+									"value": "{{advertisementID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AU-logout U",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AU-delete myself U",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const baseUrl = pm.collectionVariables.get(\"base_url\");\r",
+									"\r",
+									"pm.sendRequest({\r",
+									"        url : `http://${baseUrl}/api/auth/login`,\r",
+									"        method :'POST',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        },\r",
+									"        body: {\r",
+									"            mode: 'raw',\r",
+									"            raw: JSON.stringify({  \r",
+									"            \"email\": \"postman@example.com\",\r",
+									"            \"password\": \"String!0\",\r",
+									"            \"rememberMe\": true\r",
+									"        })}});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/auth/myself",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"myself"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NotLoggedIn",
+			"item": [
+				{
+					"name": "A-Current_adveritisements",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/advertisement/current",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"advertisement",
+								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "A-adverisement_by_id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const baseURL = pm.collectionVariables.get(\"base_url\");\r",
+									"\r",
+									"pm.sendRequest({\r",
+									"    url: `http://${baseURL}/api/advertisement/current`, \r",
+									"    method: 'GET'\r",
+									"}, function (err, res) {\r",
+									"    if (err) {\r",
+									"        console.log(err);\r",
+									"    } else {\r",
+									"        const resp=  res.json();\r",
+									"const firstAdvId= resp[0].id;\r",
+									"console.log(firstAdvId);\r",
+									"pm.collectionVariables.set(\"firstAdvId_NLI\", firstAdvId);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"I have all details of advertisement\", ()=>{\r",
+									"    //van minden kulcsa\r",
+									"    const resp = pm.response.json();\r",
+									"    pm.expect(resp).to.have.property(\"id\");\r",
+									"    pm.expect(resp).to.have.property(\"petDto\");\r",
+									"    pm.expect(resp).to.have.property(\"createdAt\");\r",
+									"    pm.expect(resp).to.have.property(\"expiresAt\");\r",
+									"    pm.expect(resp).to.have.property(\"applications\");\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/advertisement/:advertisementId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"advertisement",
+								":advertisementId"
+							],
+							"variable": [
+								{
+									"key": "advertisementId",
+									"value": "{{firstAdvId_NLI}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resp  = pm.response.json();\r",
+									"const baseUrl = pm.collectionVariables.get(\"base_url\");\r",
+									"const email = pm.variables.get(\"email\");\r",
+									"const password= pm.variables.get(\"password\");\r",
+									"\r",
+									"if(resp.message==\"A user with this email already exists.\"){\r",
+									"    //log in as user and delete myself\r",
+									"    pm.sendRequest({\r",
+									"        url : `http://${baseUrl}/api/auth/login`,\r",
+									"        method :'POST',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        },\r",
+									"        body: {\r",
+									"            mode: 'raw',\r",
+									"            raw: JSON.stringify({  \r",
+									"            \"email\": email,\r",
+									"            \"password\": password,\r",
+									"            \"rememberMe\": true\r",
+									"        })\r",
+									"    }},(err,res)=>{\r",
+									"        if (err) {\r",
+									"        console.log(err);}\r",
+									"        else {\r",
+									"        pm.sendRequest({\r",
+									"            url: `http://${baseUrl}/api/auth/myself`,\r",
+									"            method: 'DELETE',\r",
+									"            header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    }\r",
+									"        }, (errsec,respsec)=>{\r",
+									"            if(errsec){\r",
+									"                console.log(errsec)\r",
+									"            } else{\r",
+									"                if(respsec.code==204){\r",
+									"                    // repeat the request\r",
+									"                    //it works only when running the folder or collection\r",
+									"                    pm.execution.setNextRequest(\"Register\");\r",
+									"                }\r",
+									"            }\r",
+									"        })\r",
+									"    }\r",
+									"    }\r",
+									"    )  \r",
+									"} else {\r",
+									"    pm.test(\"Status code is 201\", function () {\r",
+									"        pm.response.to.have.status(201);\r",
+									"    });\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.variables.set(\"firstName\", \"testfkiFirst\");\r",
+									"pm.variables.set(\"lastName\", \"testfkiLast\");\r",
+									"pm.variables.set(\"email\", \"testfki@example.com\");\r",
+									"pm.variables.set(\"password\",\"String!0\");\r",
+									"pm.variables.set(\"isStaff\", false);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"{{firstName}}\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"isStaff\": {{isStaff}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const response = pm.response.json();\r",
+									"pm.test(\"User get all the details, and cookie is setted\", ()=>{\r",
+									"    pm.expect(response).to.have.property(\"userName\");\r",
+									"    pm.expect(response).to.have.property(\"email\");\r",
+									"    pm.expect(response).to.have.property(\"lastName\");\r",
+									"    pm.expect(response).to.have.property(\"firstName\");\r",
+									"    pm.expect(response).to.have.property(\"role\");\r",
+									"    pm.expect(response).to.have.property(\"id\");\r",
+									"    pm.expect(pm.cookies.get(\".AspNetCore.Identity.Application\")).not.to.be.undefined;\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\"email\": \"testfki@example.com\",\r\n            \"password\": \"String!0\",\r\n            \"rememberMe\": true}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AU-logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Cookie has been deleted\", ()=>{\r",
+									"    const cookie = pm.response.cookies['.AspNetCore.Identity.Application'];\r",
+									"   pm.expect(cookie == undefined);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const baseUrl = pm.collectionVariables.get(\"base_url\");\r",
+									"\r",
+									"\r",
+									"pm.sendRequest({\r",
+									"        url : `http://${baseUrl}/api/auth/login`,\r",
+									"        method :'POST',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        },\r",
+									"        body: {\r",
+									"            mode: 'raw',\r",
+									"            raw: JSON.stringify({  \r",
+									"            \"email\": \"tom.taylor@email.com\",\r",
+									"            \"password\": \"String!2\",\r",
+									"            \"rememberMe\": true\r",
+									"        })\r",
+									"    }},(err,res)=>{\r",
+									"        if (err) {\r",
+									"        console.log(err);}\r",
+									"        })"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		},
+		{
+			"key": "firstAdvId_NLI",
+			"value": ""
+		},
+		{
+			"key": "authCookie",
+			"value": ""
+		},
+		{
+			"key": "advertisementID",
+			"value": ""
+		}
+	]
+}
